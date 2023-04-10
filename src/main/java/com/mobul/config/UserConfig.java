@@ -1,4 +1,4 @@
 package com.mobul.config;
 
-public class ddd {
+public class UserConfig {
 }
