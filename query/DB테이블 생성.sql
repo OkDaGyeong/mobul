@@ -7,7 +7,7 @@ drop table comments;
 
 
 CREATE TABLE users(                             	 -- 사용자 테이블
-  user_id varchar(20) NOT NULL primary key,		   	 -- 사용자 아이디
+  user_id varchar(20) NOT NULL primary key,		   	 -- 사용자 아이디    일 대 일
   user_password VARCHAR(20) NOT NULL,         		 -- 사용자 비밀번호         
   user_phone VARCHAR(20) NULL,						 -- 사용자 전화번호
   user_one varchar(20),								 -- 더미
@@ -16,13 +16,13 @@ CREATE TABLE users(                             	 -- 사용자 테이블
 );
 
 CREATE TABLE boards(                              
-  board_id INT primary key not null AUTO_INCREMENT,			-- 게시글 번호  pk  not null Auto_increment
-  board_title VARCHAR(100) NOT NULL,              		    -- 게시글 제목 
+  board_id INT primary key not null AUTO_INCREMENT,			-- 게시글 번호  pk  not null Auto_increment  일 대 다 
+  board_title VARCHAR(50) NOT NULL,              		    -- 게시글 제목 
   board_content text not NULL,								-- 게시글 본문 
   board_view int default 0,									-- 게시글 조회수 
-  board_writer varchar(100) not null,						-- 게시글 작성자 FK 설정 not tull, users테이블의 user_id와 연결
+  board_writer varchar(20) not null,						-- 게시글 작성자 FK 설정 not tull, users테이블의 user_id와 연결
   board_like int DEFAULT 0,									-- 게시글 좋아요 not null default 0 
-  board_tag varchar(100),									-- 게시물 해시태그 
+  board_tag varchar(30),									-- 게시물 해시태그 
   borad_date timestamp,										-- 게시글 작성날짜
   board_one varchar(20) null,
   board_two varchar(20) null,

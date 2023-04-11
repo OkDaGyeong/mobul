@@ -1,4 +1,4 @@
-### 참고
+----------------------------  참고
 spring.jpa.hibernate.ddl-auto:  뒤에  붙을 명령어
 
 - create
@@ -16,5 +16,34 @@ application 실행 시  @Entity들과 이미 존재하는 테이블(schema)가 �
 - none
 아무 작업도 하지 않는다.
 
+
+------------------ persistence.xml 영속성 데이터베이스 관리 JPA 전용 .xml
+
+
+
+
+------------ @Column 참조
+// columnDefinition = "TEXT" << Type을 TEXT로 하겠다
+@Column(name="board_content", nullable = false, columnDefinition = "TEXT")
+
+// columnDefinition = "integer default 0"  타입을 integer로 하고 초기값을 0으로 하겠다.
+@Column(name="board_like", columnDefinition = "integer default 0" )
+
+
+
+------- @폴리건키 설정
+------- @ 외래키 설정
+user_id
+    // 포린키를 생성시는 꼭 클래스의 객체를 만들어 줘야 한다
+    // users 객체가 user_id 칼럼이 되고
+    // users 의 user_id  동작이 같이 ...
+    //  여기에 따로 지정 해주는 객체가 없는 이유가
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")  // 포린키 설정
+    private Users users;          JoinColumn  -- 참조할  테이블 명 입력
+
+
+    @OneToMany(mappedBy = "users")
+    private List<Boards> board_writer;
 
 

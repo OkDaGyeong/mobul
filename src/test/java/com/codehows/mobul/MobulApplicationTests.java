@@ -1,4 +1,4 @@
-package com.codhows.mobul;
+package com.codehows.mobul;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
