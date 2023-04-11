@@ -1,4 +1,6 @@
 package com.mobul.dto;
 
-public class UserDTO {
+public class UsersDTO {
+
+
 }

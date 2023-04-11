@@ -2,7 +2,7 @@
 - IntelliJ IDEA Community Edition
 - amazon corretto open jdk 11
 - mysql 8
-- mybatis
+- JPA
 - thymeleafe 
 
 주요 기능
