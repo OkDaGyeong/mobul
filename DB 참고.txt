@@ -47,3 +47,24 @@ user_id
     private List<Boards> board_writer;
 
 
+----- .yml 파일은 파이썬 같은 느낌으로 들여쓰기에 맞춰 ...
+spring:
+    jpa:
+      properties:
+         hibernate:
+         ## 주석 표시
+            use_sql_comments: true
+
+          ## 쿼리 들여쓰기 등의 포맷에 맞춰 표출
+            format_sql: true
+
+
+          ## 파라미터 값 표출 - 이 옵션을 사용하지 않으면 기본적으로 파라미터 값이 무엇인지 알 수 없고, 바인딩 쿼리로그만 찍힘
+            type:
+                   descriptor:
+                      sql: trace
+
+
+
+
+
