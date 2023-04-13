@@ -25,4 +25,11 @@ public class BoardsController {
         System.out.println(boardsDTO);
         return  null;
     }
+
+    @GetMapping("/comment")
+    public String commentForm(){return "boards/comment";}
+
+    @GetMapping("/writer")
+    public String writerForm(){return  "boards/writer";}
+
 }
