@@ -33,6 +33,10 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	compileOnly 'javax.persistence:javax.persistence-api:2.2'
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.modelmapper:modelmapper:2.4.2'
+	testImplementation 'org.modelmapper:modelmapper:2.4.2'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+
 }
 
 tasks.named('test') {
