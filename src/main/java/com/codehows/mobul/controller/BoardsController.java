@@ -1,12 +1,15 @@
 package com.codehows.mobul.controller;
 
 import com.codehows.mobul.dto.BoardsDTO;
+import com.codehows.mobul.dto.BoardsFormDTO;
+//import com.codehows.mobul.entity.Boards;
 import com.codehows.mobul.entity.Boards;
 import com.codehows.mobul.service.BoardsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 //import org.springframework.web.multipart.MultipartFile;
 
@@ -41,7 +44,10 @@ public class BoardsController {
     public String commentForm(){return "boards/comment";}
 
     @GetMapping("/writer")
-    public String writerForm(){return  "boards/writer";}
+    public String writerForm(Model model){
+        model.addAttribute("boardsFormDto", new BoardsFormDTO());
+        return  "boards/writer";
+    }
 
 //--
     // BoardsFIleFormDTO를 model에 담아서 뷰로 전달
@@ -52,19 +58,14 @@ public class BoardsController {
 //        return "boards/writer";
 //    }
 
-    // /write 페이지 보이기 - 데이터 가져오기 - boards/writer.html에서
-    @GetMapping("/write")
-    public String boardWriteForm(){
-        // 어떤 html파일로 이동할지
-        return "boards/writer";
-    }
 
     // 게시물 등록
-    @PostMapping("/write")
-    public String boardsWrite(Boards boards) {
-        boardsService.write(boards);
-
-        return "boards/writer";
+    @PostMapping("/writer")
+    public String boardsWrite(BoardsFormDTO boardsFormDTO) {
+//        System.out.println(boardsFormDTO); // 값 받아온
+        Boards boards = Boards.toBoards(boardsFormDTO);
+        boardsService.save(boards);
+        return "redirect:/";
     }
 
 

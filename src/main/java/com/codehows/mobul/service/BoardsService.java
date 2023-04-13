@@ -22,7 +22,9 @@ public class BoardsService {
 
     // 파일 입력
     public void write(Boards boards) {boardsRepository.save(boards);}
-
+    public void save(Boards boards) {
+        boardsRepository.save(boards);
+    }
 
 
 

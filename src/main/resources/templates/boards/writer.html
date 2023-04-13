@@ -18,38 +18,44 @@
     <div id="logo" class="clearfix">
         <p><a href="#">SAY SOMETHING</a></p>
     </div>
-    <!-- 테이블 섹션 -->
-    <div id="tableWrap">
-        <input type="button" value="글 목록" id="listBtn" style="font-weight : bold">
-        <div id="tableBox">
-            <tr>
-                <td>
-                    <input type="text" placeholder="제목을 입력하세요">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <textarea placeholder="내용을 입력하세요" id="text"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <textarea placeholder="#해시태그" id="hash" style="overflow:hidden"></textarea>
-                </td>
-            </tr>
-            <label for="file-upload" class="custom-file-upload">
-                파일 선택하기
-            </label>
-            <input id="file-upload" type="file" name="file" />
-            <!-- 선택된 파일명을 보여주는 영역 -->
-            <div id="fileName"></div>
 
-            <td>
-                <input type="button" value="등록" style="font-weight : bold">
-            </td>
-            </tr>
+    <form action="/board/writer" method="post" th:object="${boardsFormDto}">  <!-- enctype="multipart/form-data" -->
+    <!-- 테이블 섹션 -->
+        <div id="tableWrap">
+            <input type="button" value="글 목록" id="listBtn" style="font-weight : bold">
+            <div id="tableBox">
+                <tr>
+                    <td>
+                        <input name="boardTitle" type="text" placeholder="제목을 입력하세요"
+                               th:field="*{boardTitle}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="boardContent" placeholder="내용을 입력하세요" id="text"
+                                  th:field="*{boardContent}"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="boardTag" placeholder="#해시태그" id="hash" style="overflow:hidden"
+                                  th:field="*{boardTag}"></textarea>      <!--확인-->
+                    </td>
+                </tr>
+                <label for="file-upload" class="custom-file-upload">
+                    파일 선택하기
+                </label>
+                <input id="file-upload" type="file" name="file" />
+                <!-- 선택된 파일명을 보여주는 영역 -->
+                <div id="fileName"></div>
+
+                <td>
+                    <input type="submit" value="등록" style="font-weight : bold">     <!--// button -> submit 변겅-->
+                </td>
+                </tr>
+            </div>
         </div>
-    </div>
+    </form>
     </div>
 </body>
 </html>

@@ -1,7 +1,9 @@
 package com.codehows.mobul.entity;
 
+import com.codehows.mobul.dto.BoardsFormDTO;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -31,7 +33,8 @@ public class Boards {
     private Long boardView;
 
     //게시글 작성자 not null fk 설정   users 테이블의 user_id와 연결
-    @Column(name = "board_writer", nullable = false, length = 20)
+    //@Column(name = "board_writer", nullable = false, length = 20)
+    @Column(name = "board_writer", length = 20)
     private String boardWriter;
 
     //게시글 좋아요  not null default 0  : 좋아요 낫널 확인필요
@@ -51,6 +54,15 @@ public class Boards {
     @CreationTimestamp
     @Column(name = "board_update", columnDefinition = "TIMESTAMP")
     private LocalDateTime boardDateUpdate;
+
+
+    // BoardsFormDTO를 엔티티로 변경
+    public static Boards toBoards(BoardsFormDTO dto) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(dto, Boards.class);
+    }
+
+
 
     // 포린키를 생성시는 꼭 클래스의 객체를 만들어 줘야 한다
     // users 객체가 user_id 칼럼이 되고
