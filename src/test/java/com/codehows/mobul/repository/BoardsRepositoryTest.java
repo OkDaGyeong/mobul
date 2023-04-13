@@ -1,9 +1,63 @@
 package com.codehows.mobul.repository;
 
-import static org.assertj.core.api.Assertions.*;
+import com.codehows.mobul.entity.Boards;
+import com.codehows.mobul.entity.Users;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
+@SpringBootTest
+@TestPropertySource(locations="classpath:application-test.properties")
 public class BoardsRepositoryTest {
 
+//
+//    @Autowired
+//    BoardsRepository boardsRepository;
+//
+//    @Autowired
+//    UsersRepository usersRepository;
+//
+//    @PersistenceContext
+//    EntityManager em;
+//
+//    @Test
+//    @DisplayName("게시글 저장 테스트")
+//    public void createBoardsTest(){
+//        Users user = new Users();
+//        user.setUserId("test");
+//        user.setUserPassword("test");
+//        user.setUserPhone("000000");
+//		usersRepository.save(user);
+//
+//        Users us = usersRepository.findByUserId("test");
+//
+//		Boards boards = new Boards();
+//		boards.setBoardTitle("테스트 제목");
+//		boards.setBoardContent("테스트 본문");
+//		boards.setBoardWriter("테스트 작성자");
+//		boards.setBoardTag("테스트 해시태그");
+//		boards.setUsers(us);
+//        System.out.println(boards.getBoardId());
+//		Boards savedBoards = boardsRepository.save(boards);
+//
+//        Boards bd = boardsRepository.findByBoardTitle("테스트 제목");
+//        System.out.println(bd.getBoardId());
+//
+////        em.flush();
+////        em.clear();
+//        assertEquals(us.getUserId(), bd.getUsers().getUserId());
+//    }
+    @Test
+    void contextLoads() {
+    }
 
 }
 
