@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 
 @Getter @Setter @ToString
-@NoArgsConstructor      //기본 생성자
-@AllArgsConstructor     // 모든 필드를 매개변수로 하는 생성자     들을 자동으로 만들어줌
+@NoArgsConstructor      //기본 생성자 자동 생성
+@AllArgsConstructor     // 모든 필드를 매개변수로 하는 생성자 들을 자동으로 만들어줌
 public class BoardsDTO {
 
     private int boardId;        // 게시판 번호 

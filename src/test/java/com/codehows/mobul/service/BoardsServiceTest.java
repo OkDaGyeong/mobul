@@ -1,17 +1,8 @@
 package com.codehows.mobul.service;
 
-import com.codehows.mobul.entity.Boards;
-import com.codehows.mobul.entity.Users;
-import com.codehows.mobul.repository.BoardsRepository;
-import com.codehows.mobul.repository.UsersRepository;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 
-import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
