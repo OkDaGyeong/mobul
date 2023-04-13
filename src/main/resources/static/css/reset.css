@@ -1,9 +1,11 @@
 /* css 초기화 */
 
 @font-face {
+
   font-family: "S-CoreDream-3Light";
   src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
     format("woff");
+
   font-weight: normal;
   font-style: normal;
 }
@@ -37,11 +39,7 @@ a {
   text-decoration: none;
   color: black;
 }
-ul,
-li,
-ol {
-  list-style: none;
-}
+ul,li,ol{list-style: none;}
 
 /* input 기본 스타일 초기화 */
 input {
@@ -54,9 +52,61 @@ input {
 }
 button,
 select,
-option {
+option,textarea {
   font-family: "S-CoreDream-3Light";
 }
 input[type="button"] {
   background-color: transparent;
 }
+
+/* 공통 */
+/* 전체배경 */
+#wrap{
+  width: 100%;
+  height: auto;
+  background-color: #F9F8F6;
+}
+
+/* 테이블 섹션 */
+#tableWrap{
+  width: 1130px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.0);
+  margin: 0 auto;
+}
+
+/* 겉 실선 */
+#tableBox{
+  /* border: 1px solid #434343; */
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/*붙*/
+/* 로고 겉 껍데기 */
+#logo{
+  width: 100%;
+  height: auto;
+  padding-top: 70px;
+  display: flex;
+  justify-content: center;
+}
+/* 로고 폰트 */
+#logo p a {
+  color:#047D5A;
+  font-weight: 700;
+  font-size: 6vw;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+/* 글목록,작성 버튼 폰트 */
+input{
+  font-family: 'S-CoreDream-3Light';
+  cursor: pointer;
+  color: #5E6790;
+  font-weight: 500;
+}
+

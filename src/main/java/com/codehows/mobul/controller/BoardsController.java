@@ -36,7 +36,14 @@ public class BoardsController {
         return null;
     }
 
+//경원--
+    @GetMapping("/comment")
+    public String commentForm(){return "boards/comment";}
 
+    @GetMapping("/writer")
+    public String writerForm(){return  "boards/writer";}
+
+//--
     // BoardsFIleFormDTO를 model에 담아서 뷰로 전달
     // value, return 확인필요
 //    @GetMapping(value = "/new")
@@ -99,5 +106,6 @@ public class BoardsController {
 //        return "redirect:/";        // 정상 등록 -> 메인페이지 이동
 //    }
 //
+
 
 }
