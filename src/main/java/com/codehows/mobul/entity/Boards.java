@@ -28,15 +28,15 @@ public class Boards {
 
     //게시글 조회수 int defalt 0
     @Column(name = "board_view", columnDefinition = "integer default 0")
-    private int boardView;
+    private Long boardView;
 
     //게시글 작성자 not null fk 설정   users 테이블의 user_id와 연결
     @Column(name = "board_writer", nullable = false, length = 20)
     private String boardWriter;
 
-    //게시글 좋아요  not null default 0
+    //게시글 좋아요  not null default 0  : 좋아요 낫널 확인필요
     @Column(name = "board_like", columnDefinition = "integer default 0")
-    private int boardLike;
+    private Long boardLike;
 
     //게시물 해시태그  varchar(30)
     @Column(name = "board_tag", length = 30)
@@ -55,9 +55,16 @@ public class Boards {
     // 포린키를 생성시는 꼭 클래스의 객체를 만들어 줘야 한다
     // users 객체가 user_id 칼럼이 되고
     // users 의 user_id  동작이 같이 ...
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")  // 포린키 설정
-    private Users users;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")  // 포린키 설정
+//    private Users users;
+
+
+
+//    // 파일 업로드 -- 수정중
+//    private String fileName;
+//
+//    private String filePath;
 
 }
 
