@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>SAY SOMETHING</title>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
-    <link rel="stylesheet" th:href="@{/css/commentPage.css}">
-    <script src="js/comment.js"></script>
+    <link rel="stylesheet" th:href="@{/css/commentPage.css?after}">
+    <script th:src="@{/js/comment.js}" defer></script>
+    <script th:src="@{/js/reply.js}" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap}" rel="stylesheet">
@@ -15,13 +16,13 @@
     <!-- 헤더 -->
 
     <div id="logo" class="clearfix">
-        <p><a href="#">SAY SOMETHING</a></p>
+        <p><a href="/">SAY SOMETHING</a></p>
     </div>
 
     <!-- 테이블 섹션 -->
 
     <div id="tableWrap">
-        <input type="button" value="글 목록" id="listBtn" style="font-weight : bold ;">
+        <input type="button" value="글 목록" id="listBtn" style="font-weight : bold ;" onclick="location.href='/'">
         <div id="tableBox">
             <div class="titleArea">
                 <p class="date">2023.04.11</p>
@@ -95,11 +96,21 @@
         </ul>
 
         <div id="postComment">
-            <textarea id="postArea" placeholder="댓글을 작성해 주세요 바르고 고운말을 사용합시다"style="overflow=hidden" ></textarea>
+            <textarea id="postArea" placeholder="댓글을 작성해 주세요 바르고 고운말을 사용합시다"style="overflow=hidden white-space: pre-wrap;" ></textarea>
             <button id="post">작성하기</button>
         </div>
+
+    </div>
+
+    <!--푸터-->
+    <div class="footer centerContent">
+        <p>@ create by MOBUL</p>
     </div>
 </div>
+
+
+
 </div>
+
 </body>
 </html>

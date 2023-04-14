@@ -5,16 +5,16 @@ html {
   margin: 0;
 }
 body {
+  width:100%;
   min-height: 100%;
 }
 .footer {
+
   border: 1px solid #ccc;
   height: 100px;
   color: var(--ivory);
   background-color: var(--green);
   margin-top: 20px;
-  width: 100%;
-
   position: absolute;
   left: 0;
   right: 0;

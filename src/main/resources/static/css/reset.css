@@ -109,4 +109,15 @@ input{
   color: #5E6790;
   font-weight: 500;
 }
+/* 스크롤 바 */
+body::-webkit-scrollbar{
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color:  #5E6790;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
 
