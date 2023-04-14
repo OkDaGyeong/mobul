@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -73,5 +70,13 @@ public class AuthController {
         //어떠한 html로 가져갈 데이터가 있다면 model 사용
         model.addAttribute("usersList", usersDTOList);
         return "/auth/list";
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable String userId){
+        authService.deleteById(userId);
+        return "redirect:/";         // 리다이렉트 뒤에는 주소가 온다
+
     }
 }

@@ -53,12 +53,18 @@ public class AuthService {
         List<UsersDTO> usersDTOList = new ArrayList<>();
         for (Users users: usersList){
             usersDTOList.add(UsersDTO.toUsersDTO(users));
+            UsersDTO usersDTO = UsersDTO.toUsersDTO(users);
+            usersDTOList.add(usersDTO);
             
             //윗 작업을 길게 쓰면 이렇게 된다
 //            UsersDTO usersDTO = UsersDTO.toUsersDTO(users);
 //            usersDTOList.add(usersDTO);
         }
         return usersDTOList;
+    }
+
+    public void deleteById(String userId) {
+        authRepository.deleteById(userId);
     }
 }
 //

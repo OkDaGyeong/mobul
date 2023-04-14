@@ -11,7 +11,7 @@
         <th>id</th>
         <th>userId</th>
         <th>userPassword</th>
-        <th>userPhon</th>
+        <th>userPhone</th>
         <th>상세조회</th>
         <th>삭제</th>
     </tr>
@@ -20,10 +20,12 @@
         <td th:text="${users.userPassword}"></td>
         <td th:text="${users.userPhone}"></td>
         <td>
-            <a th:href="@{|/users/${users.userId}|}">조회</a>
+
+<!--            주소 치는 곳... -->
+            <a th:href="@{|/auth/${users.userId}|}">조회</a>
         </td>
         <td>
-            <a th:href="@{|/users/delete/${users.userId}|}">삭제</a>
+            <a th:href="@{|/auth/delete/${users.userId}|}">삭제</a>
         </td>
     </tr>
 </table>

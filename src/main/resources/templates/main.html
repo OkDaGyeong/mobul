@@ -18,7 +18,7 @@
     <div class="rightBox">
         <div id="signBox">
             <a th:href="@{/auth/signin}">로그인</a>
-            <a th:href="@{/auth}">회원가입</a>
+            <a th:href="@{/auth/signup}">회원가입</a>
         </div>
     </div>
     <div>
@@ -40,7 +40,7 @@
             <input type="search" placeholder="검색어를 입력하세요" />
         </form>
 
-        <button class="btn-navy">글 작성하기</button>
+        <a href="/board/writer"><button class="btn-navy">글 작성하기</button></a>
     </div>
 
 <!--    게시글 목록 (표로 출력)-->
