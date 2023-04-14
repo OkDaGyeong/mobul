@@ -25,6 +25,9 @@ public class Users {
 
     @Column(name = "user_phone", length = 20)
     private String userPhone;
+//
+//    @Enumerated(EnumType.STRING)  // 이넘타입 스트링으로 저장
+//    private Role role;
 
 //    @OneToMany(mappedBy = "users")
 //    private List<Boards> board_writer;
