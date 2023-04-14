@@ -49,7 +49,7 @@ public class Boards {
 
     // 게시물 수정시간
     @CreationTimestamp
-    @Column(name = "board_update", columnDefinition = "TIMESTAMP")
+    @Column(name = "board_date_update", columnDefinition = "TIMESTAMP")
     private LocalDateTime boardDateUpdate;
 
     // 포린키를 생성시는 꼭 클래스의 객체를 만들어 줘야 한다

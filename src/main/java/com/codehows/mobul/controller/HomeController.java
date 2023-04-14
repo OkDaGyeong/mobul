@@ -1,6 +1,13 @@
 package com.codehows.mobul.controller;
 
 import com.codehows.mobul.dto.BoardsDTO;
+import com.codehows.mobul.entity.Boards;
+import com.codehows.mobul.service.BoardsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,24 +20,70 @@ import java.util.List;
 @Controller
 
 public class HomeController {
-
     // 기본 주소 요청 이 오면 띄워 주는 메서드
-    @GetMapping("/")
-    public String mainPage(Model model){
+    @Autowired
+    private BoardsService boardsService;
 
-        List<BoardsDTO> boardsDTOList = new ArrayList<>();
+//    @GetMapping("/")
+//    public String findAllBoards(Model model) {
+//        List<Boards> boardsList = boardsService.findAllBoards();
+//        model.addAttribute("boardsList", boardsList);
+//        return "main";
+//    }
 
-        for (int i=1; i<=15; i++){
-            BoardsDTO boardsDTO = new BoardsDTO();
-            boardsDTO.setBoardId(i);
-            boardsDTO.setBoardTitle("테스트 제목 "+i);
-            boardsDTO.setBoardDate(LocalDateTime.now());
+    //페이지 네이션
+//    @GetMapping("/board/list")
+//    public String boardList(Model model, @PageableDefault(page=0, size=10, sort="id", direction= Sort.Direction.DESC) Pageable pageable){
+//        //서비스에서 생성한 리스트를 list라는 이름으로 반환하겠다.
+//        model.addAttribute("list", boardsService.boardList(pageable));
+//        return "main";
+//    }
 
-            boardsDTOList.add(boardsDTO);
+    @GetMapping("/board/list")
+    public String boardList(Model model, @PageableDefault(page=0, size=15, sort="boardId",
+            direction= Sort.Direction.DESC) Pageable pageable, String searchTitle, String searchContent){
+
+        //Page<Boards> list = boardsService.boardList(pageable);
+        Page<Boards> list=null;
+        if (searchTitle == null && searchContent==null) {
+            // 검색 단어가 없으면 기존 화면을 보여준다.
+            list =boardsService.boardList(pageable);
+        }else if(searchTitle !=null){
+            list = boardsService.boardSearchList(searchTitle, pageable);
+        }else if( searchContent !=null) {
+            // 검색 단어가 들어오면 검색 단어에 맞게 나온다. 쿼리스트링으로 들어가는 키워드를 찾아냄
+            list = boardsService.boardSearchList2(searchContent, pageable);
         }
 
 
-        model.addAttribute("boardsDTOList",boardsDTOList);
+        //페이지블럭 처리
+        //1을 더해주는 이유는 pageable은 0부터라 1을 처리하려면 1을 더해서 시작해주어야 한다.
+//        int nowPage = list.getPageable().getPageNumber() + 1;
+//        //-1값이 들어가는 것을 막기 위해서 max값으로 두 개의 값을 넣고 더 큰 값을 넣어주게 된다.
+//        int startPage =  Math.max(nowPage - 4, 1);
+//        int endPage = Math.min(nowPage+14, list.getTotalPages());
+
+        //페이지블럭 처리
+//1을 더해주는 이유는 pageable은 0부터라 1을 처리하려면 1을 더해서 시작해주어야 한다.
+        int nowPage = list.getPageable().getPageNumber() + 1;
+
+//페이지네이션 개수 설정
+        int pageCnt = 5;
+
+//페이지네이션 범위 계산
+        int startPage = Math.max(nowPage - (pageCnt / 2), 1);
+        int endPage = Math.min(startPage + pageCnt - 1, list.getTotalPages());
+
+//시작 페이지 재조정
+        if (endPage == list.getTotalPages()) {
+            startPage = Math.max(endPage - pageCnt + 1, 1);
+        } else if (startPage == 1) {
+            endPage = Math.min(startPage + pageCnt - 1, list.getTotalPages());
+        }
+        model.addAttribute("list", list);
+        model.addAttribute("nowPage",nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
 
         return "main";
     }
