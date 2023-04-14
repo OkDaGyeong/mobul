@@ -11,19 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
 @Getter @Setter
-@ToString
+@Table(name = "users")
 public class Users {
 
-    @Id
-    @Column(name = "user_id", nullable = false, length = 20)
+    @Id         //pk 설정
+    @Column(nullable = false, length = 20)
     private String userId;
 
-    @Column(name = "user_password", nullable = false, length = 20)
+    @Column(nullable = false, length = 20)
     private String userPassword;
 
-    @Column(name = "user_phone", length = 20)
+    @Column(length = 20)
     private String userPhone;
 //
 //    @Enumerated(EnumType.STRING)  // 이넘타입 스트링으로 저장
@@ -43,15 +42,13 @@ public class Users {
         return  users;
     }*/
 
-    // 유저 생성 메서드
-    public static Users createUsers(UsersDTO usersDTO){
+    // 유저 생성 메서드  dto -> entity
+    public static Users authSignUp(UsersDTO usersDTO){
         Users users = new Users();
         users.setUserId(usersDTO.getUserId());
         users.setUserPassword(usersDTO.getUserPassword());
-        users.setUserPhone(users.getUserPhone());
+        users.setUserPhone(usersDTO.getUserPhone());
         return  users;
     }
-
-
 
 }

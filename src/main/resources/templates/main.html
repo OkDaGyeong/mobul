@@ -9,6 +9,10 @@
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 <body>
+    session 값 확인 : <p th:text="${session.userId}"></p>
+    <a href="/auth/list">유저 목록</a>
+
+
 <!--로고, 로그인, 회원가입 링크-->
 <div class="header">
     <div class="rightBox">
@@ -36,6 +40,7 @@
         </form>
 
         <button class="btn-navy" onclick="location.href='@{/board/writer}'">글 작성하기</button>
+
     </div>
     <script>
     // searchCategory 값이 변경될 때마다 searchKeyword input의 name 속성 변경
