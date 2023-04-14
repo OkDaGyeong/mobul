@@ -19,7 +19,7 @@
         <p><a href="#">SAY SOMETHING</a></p>
     </div>
 
-    <form action="/board/writer" method="post" th:object="${boardsFormDto}">  <!-- enctype="multipart/form-data" -->
+    <form action="/board/writer" method="post" th:object="${boardsFormDto}" enctype="multipart/form-data">  <!-- 혜영 추가 enctype="multipart/form-data" -->
     <!-- 테이블 섹션 -->
         <div id="tableWrap">
             <input type="button" value="글 목록" id="listBtn" style="font-weight : bold">
@@ -47,10 +47,12 @@
                 </label>
                 <input id="file-upload" type="file" name="file" />
                 <!-- 선택된 파일명을 보여주는 영역 -->
-                <div id="fileName"></div>
+                <div id="fileName" >
+                    <input type="file" name="boardsFile">
+                </div>
 
                 <td>
-                    <input type="submit" value="등록" style="font-weight : bold">     <!--// button -> submit 변겅-->
+                    <input type="submit" value="등록" style="font-weight:bold">     <!--// button -> submit 변겅-->
                 </td>
                 </tr>
             </div>

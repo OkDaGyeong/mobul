@@ -18,19 +18,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestPropertySource(locations="classpath:application-test.properties")
 public class BoardsRepositoryTest {
 
-//
-//    @Autowired
-//    BoardsRepository boardsRepository;
-//
+    //
+    @Autowired
+    BoardsRepository boardsRepository;
+
+    //
 //    @Autowired
 //    UsersRepository usersRepository;
 //
 //    @PersistenceContext
 //    EntityManager em;
 //
-//    @Test
-//    @DisplayName("게시글 저장 테스트")
-//    public void createBoardsTest(){
+    @Test
+    @DisplayName("게시글 저장 테스트")
+    public void createBoardsTest() {
 //        Users user = new Users();
 //        user.setUserId("test");
 //        user.setUserPassword("test");
@@ -39,14 +40,14 @@ public class BoardsRepositoryTest {
 //
 //        Users us = usersRepository.findByUserId("test");
 //
-//		Boards boards = new Boards();
-//		boards.setBoardTitle("테스트 제목");
-//		boards.setBoardContent("테스트 본문");
+        Boards boards = new Boards();
+        boards.setBoardTitle("테스트 제목");
+        boards.setBoardContent("테스트 본문");
 //		boards.setBoardWriter("테스트 작성자");
-//		boards.setBoardTag("테스트 해시태그");
+        boards.setBoardTag("테스트 해시태그");
 //		boards.setUsers(us);
-//        System.out.println(boards.getBoardId());
-//		Boards savedBoards = boardsRepository.save(boards);
+        System.out.println(boards.getBoardId());
+        Boards savedBoards = boardsRepository.save(boards);
 //
 //        Boards bd = boardsRepository.findByBoardTitle("테스트 제목");
 //        System.out.println(bd.getBoardId());
@@ -55,10 +56,11 @@ public class BoardsRepositoryTest {
 ////        em.clear();
 //        assertEquals(us.getUserId(), bd.getUsers().getUserId());
 //    }
-    @Test
-    void contextLoads() {
-    }
+//    @Test
+//    void contextLoads() {
+//    }
 
+    }
 }
 
 //    @DataJpaTest 어노테이션을 통해 JPA 레포지토리 관련 테스트에 필요한 설정이 자동으로 이루어지도록 합니다. 이 테스트에서는 게시글 등록 후 등록된 게시글을 조회하는 테스트를 수행합니다. given, when, then 패턴에 따라 코드가 작성되었으며, 게시글의 필수 정보인 게시글 제목, 내용, 작성자, 작

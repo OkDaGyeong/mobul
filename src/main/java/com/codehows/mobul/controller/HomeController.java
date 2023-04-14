@@ -19,10 +19,10 @@ public class HomeController {
     public String mainPage(Model model){
 
         List<BoardsDTO> boardsDTOList = new ArrayList<>();
-
+    Long w =0L;
         for (int i=1; i<=15; i++){
             BoardsDTO boardsDTO = new BoardsDTO();
-            boardsDTO.setBoardId(i);
+            boardsDTO.setBoardId(w);
             boardsDTO.setBoardTitle("테스트 제목 "+i);
             boardsDTO.setBoardDate(LocalDateTime.now());
 

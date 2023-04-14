@@ -1,36 +1,49 @@
 package com.codehows.mobul.dto;
 
+import com.codehows.mobul.entity.Boards;
+import com.codehows.mobul.entity.Users;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.modelmapper.ModelMapper;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 public class BoardsFormDTO {
-    private Long boardId;        // 게시판 번호
 
-    private String boardTitle;     //게시판 제목
+    private Long boardId;               // 게시판 번호
 
-    private String boardContent;     // 게시판 내용
+    @NotBlank
+    private String boardTitle;          //게시판 제목
 
-    private String boardWriter;     // 게시판 작성자
+    @NotBlank
+    private String boardContent;        // 게시판 내용
 
-    private LocalDateTime boardDate;       // 작성한 시간
+//    @NotBlank
+//    private Users boardWriter ;         // 게시판 작성자
 
-    private LocalDateTime boardDateUpdate;  // 수정한 시간
+    private String boardTag;            // 게시판 해시태그
+//
+//    @NotBlank
+//    private LocalDateTime boardDate;    // 작성한 시간
 
-    private String boardTag;        // 게시판 해시태그
+    private List<BoardsFileDTO> boardsFileDTOList = new ArrayList<>();   // 이미지 수정 시 이미지 정보 저장 리스트
 
+    private List<Long> fileId = new ArrayList<>();      // 파일 고유 값 저장
 
+    private static ModelMapper modelMapper = new ModelMapper();
 
+    public Boards createBoard(){
+        return modelMapper.map(this, Boards.class);
+    }
 
-    // ----혜영 : 확인 후 삭제
-
-//    private int boardView;          // 게시판 조회수
-
-//    private int boardLike;          // 게시판 좋아요 수
-
-
-
+    public static BoardsFormDTO of(Boards boards){
+        return modelMapper.map(boards, BoardsFormDTO.class);
+    }
 }
