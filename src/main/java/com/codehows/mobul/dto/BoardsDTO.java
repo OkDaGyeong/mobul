@@ -1,5 +1,6 @@
 package com.codehows.mobul.dto;
 
+import com.codehows.mobul.entity.Users;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,7 @@ public class BoardsDTO {
 
     private int boardView;          // 게시판 조회수
 
-    private String boardWriter;     // 게시판 작성자 
+    private Users boardWriter;     // 게시판 작성자
 
     private int boardLike;          // 게시판 좋아요 수 
 
