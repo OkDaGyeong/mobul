@@ -44,6 +44,9 @@ public class BoardsFile {
         this.filePath = filePath;
 
     }
+
+    public void setBoards(Boards boards) {
+    }
 }
 
 
@@ -53,7 +56,7 @@ public class BoardsFile {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long fileId;
 
-    // 게시글 번호       fk  not null
+// 게시글 번호       fk  not null
 //    @ManyToMany
 //    @JoinColumn(name = "file_board_num", referencedColumnName="board_id")
 //

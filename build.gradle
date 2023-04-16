@@ -19,8 +19,8 @@ repositories {
 }
 
 dependencies {
-	testImplementation("org.junit.platform:junit-platform-launcher:1.5.2")   //
-	testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")              //
+//	testImplementation("org.junit.platform:junit-platform-launcher:1.5.2")   //
+//	testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")              //
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -41,14 +41,15 @@ dependencies {
 
 }
 
-//tasks.named('test') {
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+//test {
 //	useJUnitPlatform()
+//	include 'com/codehows/mobul/**'
+//	testLogging {
+//		events "passed", "skipped", "failed"
+//	}
 //}
 
-test {
-	useJUnitPlatform()
-	include 'com/codehows/mobul/**'
-	testLogging {
-		events "passed", "skipped", "failed"
-	}
-}

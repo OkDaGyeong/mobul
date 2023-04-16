@@ -1,19 +1,18 @@
 package com.codehows.mobul.controller;
 
-import com.codehows.mobul.dto.BoardsFileFormDTO;
 import com.codehows.mobul.dto.BoardsFormDTO;
-import com.codehows.mobul.entity.Boards;
 import com.codehows.mobul.repository.UsersRepository;
-//import com.codehows.mobul.service.BoardsService;
 import com.codehows.mobul.service.BoardsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,7 +31,7 @@ public class BoardsController {
 
 
 
-//경원--
+    //경원--
     @GetMapping("/comment")
     public String commentForm(){return "boards/comment";}
 
@@ -47,7 +46,7 @@ public class BoardsController {
 //    }
 
 
-// 혜영--   게시글 작성페이지
+    // 혜영--   게시글 작성페이지
     @GetMapping("/writer")     // writerForm -> boardWriteForm
     public String writerForm(Model model){
         model.addAttribute("boardsFormDto", new BoardsFormDTO());
@@ -56,18 +55,18 @@ public class BoardsController {
     }
 
 
-//     게시물 등록
+    //     게시물 등록
     @PostMapping("/writer")
     public String boardsWrite(@Valid BoardsFormDTO boardsFormDTO, BindingResult bindingResult, Model model,
                               @RequestParam("boardsFile") List<MultipartFile> fileList){
         if(bindingResult.hasErrors()){ return "/boards/writer"; }
 
-       try{
-           boardsService.saveFile(boardsFormDTO, fileList);
-       } catch (Exception e){
-           model.addAttribute("errorMessage", "파일 등록 중 에러가 발생하였습니다");
-           return "/boards/writer";
-       }
+        try{
+            boardsService.saveBoard(boardsFormDTO, fileList);
+        } catch (Exception e){
+            model.addAttribute("errorMessage", "파일 등록 중 에러가 발생하였습니다");
+            return "/boards/writer";
+        }
 
 
         return "redirect:/";

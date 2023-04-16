@@ -11,7 +11,7 @@ import java.util.UUID;
 @Log
 public class FileService {
     // 업로드
-        public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception{
+    public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception{
 
         UUID uuid = UUID.randomUUID();
 
@@ -27,14 +27,14 @@ public class FileService {
     }
 
     // 삭제
-        public void deleteFile(String filePath) throws Exception{
-            File deleteFile = new File(filePath);
+    public void deleteFile(String filePath) throws Exception{
+        File deleteFile = new File(filePath);
 
-            if(deleteFile.exists()){
-                deleteFile.delete();
-                log.info("파일을 삭제하였습니다");
-            } else {
-                log.info("파일이 존재하지 않는다고");
-            }
+        if(deleteFile.exists()){
+            deleteFile.delete();
+            log.info("파일을 삭제하였습니다");
+        } else {
+            log.info("파일이 존재하지 않는다고");
         }
+    }
 }
